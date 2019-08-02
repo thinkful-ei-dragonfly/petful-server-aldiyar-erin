@@ -3,6 +3,7 @@ class _Node {
   constructor(value) {
     this.value = value;
     this.next = null;
+    this.prev = null;
   }
 }
 
@@ -20,7 +21,9 @@ class Queue {
     }
 
     if (this.last) {
-      this.last.next = node;
+      // this.last.next = node;
+      node.next = this.last;
+      this.last.prev = node;
     }
     this.last = node;
   }
@@ -31,7 +34,7 @@ class Queue {
       return;
     }
     const node = this.first;
-    this.first = this.first.next;
+    this.first = node.prev;
     //if this is the last item in the queue
     if (node === this.last) {
       this.last = null;

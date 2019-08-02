@@ -14,7 +14,7 @@ let catsArray = [{
   age: 1,
   breed: 'Domestic short haired',
   story: 'Here is a story of Cat Snow....',
-  adopter: ''
+  adopter: null,
 },
 {
   imageURL: 'https://placekitten.com/200/301',
@@ -24,7 +24,7 @@ let catsArray = [{
   age: 1,
   breed: 'Domestic short haired',
   story: 'Here is a story of Katron....',
-  adopter: ''
+  adopter: null,
 },
 {
   imageURL: 'https://placekitten.com/200/302',
@@ -34,7 +34,7 @@ let catsArray = [{
   age: 2,
   breed: 'Multicolored cat',
   story: 'Here is a story of Judge Dredd....',
-  adopter: ''
+  adopter: null,
 },
 {
   imageURL: 'https://placekitten.com/300/304',
@@ -44,15 +44,22 @@ let catsArray = [{
   age: 3,
   breed: 'Domestic short haired',
   story: 'Here is a story of Sleepster the Trickster....',
-  adopter: ''
+  adopter: null,
 }
 ];
 
+const random = Math.floor(Math.random() * catsArray.length);
 
-
-
-catsArray.forEach(cat => {
-  cats.enqueue(cat);
+catsArray.forEach((cat, index) => {
+  if(index === random){
+    cat.adopter = null;
+    cats.enqueue(cat);
+  } else {
+    const adopter = adopters.dequeue();
+    cat.adopter = adopter;
+    cats.enqueue(cat);
+    adopters.enqueue(adopter);
+  }
 });
 
 function display(queue) {
@@ -61,17 +68,37 @@ function display(queue) {
     array.push(queue.first.value);
     queue.first = queue.first.next;
   }
+  console.log(array);
   return array;
 }
 
 const CatsServices = {
   adopt() {
-    const dq = cats.dequeue();
-    const adopterName = adopters.dequeue();
-    dq.adopter = adopterName;
-    cats.enqueue(dq);
-    adopters.enqueue(adopterName);
+    let dq = cats.dequeue();
+    if(dq.adopter === null){
+      cats.enqueue(dq);
+    } else{
+      let adopterName = adopters.dequeue();
+      dq.adopter = adopterName;
+      cats.enqueue(dq);
+      adopters.enqueue(adopterName);
+    }
   },
+
+  readQue() {
+    const arr = [];
+    if(!cats.first) {
+      return [];
+    }
+    let curr = cats.first;
+    while(curr.prev!==null) {
+      arr.push(curr.value);
+      curr = curr.prev;
+    }
+    arr.push(curr.value);
+    return arr;
+  },
+  
 
   displayAll() {
     return display(cats);

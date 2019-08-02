@@ -11,7 +11,8 @@ let dogsArray = [{
   sex: 'Male',
   age: 2,
   breed: 'Puppy',
-  story: 'Here is a story of Shyster the Dog....'
+  story: 'Here is a story of Shyster the Dog....',
+  adopter: null,
 },
 {
   imageURL: 'http://place-puppy.com/200x204',
@@ -20,7 +21,8 @@ let dogsArray = [{
   sex: 'Female',
   age: 1,
   breed: 'Retreiver',
-  story: 'Here is a story of Yawny....'
+  story: 'Here is a story of Yawny....',
+  adopter: null,
 },
 {
   imageURL: 'http://place-puppy.com/200x206',
@@ -29,7 +31,8 @@ let dogsArray = [{
   sex: 'Male',
   age: 3,
   breed: 'Retreiver',
-  story: 'Here is a story of Toothless....'
+  story: 'Here is a story of Toothless....',
+  adopter: null,
 },
 {
   imageURL: 'http://place-puppy.com/200x210',
@@ -38,12 +41,23 @@ let dogsArray = [{
   sex: 'Female',
   age: 2,
   breed: 'Bulldog',
-  story: 'Here is a story of Expensivy....'
+  story: 'Here is a story of Expensivy....',
+  adopter: null,
 }
 ];
 
-dogsArray.forEach(dog => {
-  dogs.enqueue(dog);
+const random = Math.floor(Math.random() * dogsArray.length);
+
+dogsArray.forEach((dog, index) => {
+  if(index === random){
+    dog.adopter = null;
+    dogs.enqueue(dog);
+  } else {
+    const adopter = adopters.dequeue();
+    dog.adopter = adopter;
+    dogs.enqueue(dog);
+    adopters.enqueue(adopter);
+  }
 });
 
 function display(queue) {
@@ -57,16 +71,34 @@ function display(queue) {
 
 const DogsServices = {
   adopt() {
-    const dq = dogs.dequeue();
-    const adopterName = adopters.dequeue();
-    dq.adopter = adopterName;
-    dogs.enqueue(dq);
-    adopters.enqueue(adopterName);
+    let dq = dogs.dequeue();
+    if(dq.adopter === null){
+      dogs.enqueue(dq);
+    } else{
+      let adopterName = adopters.dequeue();
+      dq.adopter = adopterName;
+      dogs.enqueue(dq);
+      adopters.enqueue(adopterName);
+    }
+  },
+
+  readQue() {
+    const arr = [];
+    if(!dogs.first) {
+      return [];
+    }
+    let curr = dogs.first;
+    while(curr.prev!==null) {
+      arr.push(curr.value);
+      curr = curr.prev;
+    }
+    arr.push(curr.value);
+    return arr;
   },
 
   displayAll() {
     return display(dogs);
   }
-}
+};
 
 module.exports = DogsServices;

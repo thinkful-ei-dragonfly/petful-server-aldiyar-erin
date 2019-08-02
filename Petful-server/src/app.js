@@ -37,19 +37,19 @@ app.route('/api').get((req, res, next) => {
 app
   .route('/api/cats')
   .get((req, res, next) => {
-    res.json(CatsServices.displayAll());
+    res.json(CatsServices.readQue());
   });
 
 app
   .route('/api/cats')
   .delete((req, res, next) => {
-    res.json(CatsServices.adopt())
+    res.json(CatsServices.adopt());
   });
 
 app
   .route('/api/dogs')
   .get((req, res, next) => {
-    res.json(DogsServices.displayAll());
+    res.json(DogsServices.readQue());
   });
 
 app
