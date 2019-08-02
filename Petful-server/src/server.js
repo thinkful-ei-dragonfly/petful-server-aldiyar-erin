@@ -1,7 +1,8 @@
 /* eslint-disable strict */
 const app = require('./app');
+const PORT = process.env.PORT || 8080;
 
 
-app.listen(8080,()=>{
-  console.log('Serving on 8080');
+app.listen(PORT,()=>{
+  console.log(`Serving on ${PORT}`);
 });
