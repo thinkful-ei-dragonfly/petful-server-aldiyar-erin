@@ -49,13 +49,23 @@ catsArray.forEach(cat => {
   cats.enqueue(cat);
 });
 
-
+function display(queue) {
+  let array = [];
+  while (queue.first !== null) {
+    array.push(queue.first.value.imageURL);
+    queue.first = queue.first.next;
+  }
+  return array;
+}
 
 const CatsServices = {
-  getLast() {
-    return cats.dequeue()
-  }
+  adopt() {
+    cats.dequeue();
+  },
 
-}
+  displayAll() {
+    return display(cats);
+  }
+};
 
 module.exports = CatsServices;

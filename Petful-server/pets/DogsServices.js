@@ -4,7 +4,7 @@ const Queue = require('../QueueFiles/Queue');
 let dogs = new Queue();
 
 let dogsArray = [{
-  ImageURL: 'http://place-puppy.com/200x202',
+  imageURL: 'http://place-puppy.com/200x202',
   imageDescription: 'Doggo',
   name: 'Shyster the Dog',
   sex: 'Male',
@@ -13,7 +13,7 @@ let dogsArray = [{
   story: 'Here is a story of Shyster the Dog....'
 },
 {
-  ImageURL: 'http://place-puppy.com/200x204',
+  imageURL: 'http://place-puppy.com/200x204',
   imageDescription: 'Perfect puppy',
   name: 'Yawny',
   sex: 'Female',
@@ -22,7 +22,7 @@ let dogsArray = [{
   story: 'Here is a story of Yawny....'
 },
 {
-  ImageURL: 'http://place-puppy.com/200x206',
+  imageURL: 'http://place-puppy.com/200x206',
   imageDescription: 'Black Fury',
   name: 'Toothless',
   sex: 'Male',
@@ -31,7 +31,7 @@ let dogsArray = [{
   story: 'Here is a story of Toothless....'
 },
 {
-  ImageURL: 'http://place-puppy.com/200x210',
+  imageURL: 'http://place-puppy.com/200x210',
   imageDescription: 'Has big ears',
   name: 'Expensivy',
   sex: 'Female',
@@ -45,9 +45,22 @@ dogsArray.forEach(dog => {
   dogs.enqueue(dog);
 });
 
+function display(queue) {
+  let array = [];
+  while (queue.first !== null) {
+    array.push(queue.first.value.imageURL);
+    queue.first = queue.first.next;
+  }
+  return array;
+}
+
 const DogsServices = {
-  getLast() {
+  adopt() {
     return dogs.dequeue();
+  },
+
+  displayAll() {
+    return display(dogs);
   }
 }
 

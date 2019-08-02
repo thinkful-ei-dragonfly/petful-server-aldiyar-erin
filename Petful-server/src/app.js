@@ -34,13 +34,29 @@ app.route('/api').get((req, res, next) => {
   next();
 });
 
-app.route('/api/cats').get((req, res, next) => {
-  res.json(CatsServices.getLast());
-});
+app
+  .route('/api/cats')
+  .get((req, res, next) => {
+    res.json(CatsServices.displayAll());
+  });
 
-app.route('/api/dogs').get((req, res, next) => {
-  res.json(DogsServices.getLast());
-});
+app
+  .route('/api/cats')
+  .delete((req, res, next) => {
+    res.json(CatsServices.adopt())
+  });
+
+app
+  .route('/api/dogs')
+  .get((req, res, next) => {
+    res.json(DogsServices.displayAll());
+  });
+
+app
+  .route('/api/dogs')
+  .delete((req, res, next) => {
+    res.json(DogsServices.adopt());
+  })
 
 // middleware
 app.use(function (req, res, next) {
