@@ -52,7 +52,7 @@ catsArray.forEach(cat => {
 function display(queue) {
   let array = [];
   while (queue.first !== null) {
-    array.push(queue.first.value.imageURL);
+    array.push(queue.first.value);
     queue.first = queue.first.next;
   }
   return array;
