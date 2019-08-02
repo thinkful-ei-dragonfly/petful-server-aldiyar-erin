@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "author": "Alex Cumbo",
+  "engines": {
+    "node": "10.15.3"
+  },
+  "author": "Aldiyar, Erin, Lucas",
   "license": "UNLICENSED",
   "main": "server.js",
   "scripts": {
