@@ -5,6 +5,8 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const express = require('express');
 const cors = require('cors');
+const CatsServices = require('../pets/CatsServices');
+const DogsServices = require('../pets/DogsServices');
 
 const app = express();
 
@@ -22,7 +24,7 @@ app.route('/').get((req, res, next) => {
   next();
 });
 
-app.use('/api', (req, res, next) => {
+app.route('/api').get((req, res, next) => {
   // splash / home page request
   res.send({
     image: 'https://ak-s.ostkcdn.com/img/mxc/20150731_petpages_allaboutcats_01.jpg',
@@ -32,11 +34,29 @@ app.use('/api', (req, res, next) => {
   next();
 });
 
-app.use('/api/cats', (req, res, next) => {
-  res.json({
-    message: 'cats over here'
+app
+  .route('/api/cats')
+  .get((req, res, next) => {
+    res.json(CatsServices.readQue());
   });
-});
+
+app
+  .route('/api/cats')
+  .delete((req, res, next) => {
+    res.json(CatsServices.adopt());
+  });
+
+app
+  .route('/api/dogs')
+  .get((req, res, next) => {
+    res.json(DogsServices.readQue());
+  });
+
+app
+  .route('/api/dogs')
+  .delete((req, res, next) => {
+    res.json(DogsServices.adopt());
+  })
 
 // middleware
 app.use(function (req, res, next) {
