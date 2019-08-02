@@ -1,5 +1,6 @@
 /* eslint-disable strict */
 const Queue = require('../QueueFiles/Queue');
+const adopters = require('./Adopters');
 
 let dogs = new Queue();
 
@@ -56,7 +57,11 @@ function display(queue) {
 
 const DogsServices = {
   adopt() {
-    return dogs.dequeue();
+    const dq = dogs.dequeue();
+    const adopterName = adopters.dequeue();
+    dq.adopter = adopterName;
+    dogs.enqueue(dq);
+    adopters.enqueue(adopterName);
   },
 
   displayAll() {

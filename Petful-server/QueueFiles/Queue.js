@@ -52,11 +52,11 @@ function isEmpty(queue) {
   return queue.first === null;
 }
 
-function display(queue) {
-  while (queue.first !== null) {
-    console.log(queue.first.value);
-    queue.first = queue.first.next;
-  }
-}
+// function display(queue) {
+//   while (queue.first !== null) {
+//     console.log(queue.first.value);
+//     queue.first = queue.first.next;
+//   }
+// }
 
 module.exports = Queue;

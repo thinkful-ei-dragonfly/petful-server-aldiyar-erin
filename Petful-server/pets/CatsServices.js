@@ -1,5 +1,6 @@
 /* eslint-disable strict */
 const Queue = require('../QueueFiles/Queue');
+const adopters = require('./Adopters');
 
 
 let cats = new Queue();
@@ -12,7 +13,8 @@ let catsArray = [{
   sex: 'Male',
   age: 1,
   breed: 'Domestic short haired',
-  story: 'Here is a story of Cat Snow....'
+  story: 'Here is a story of Cat Snow....',
+  adopter: ''
 },
 {
   imageURL: 'https://placekitten.com/200/301',
@@ -21,7 +23,8 @@ let catsArray = [{
   sex: 'Male',
   age: 1,
   breed: 'Domestic short haired',
-  story: 'Here is a story of Katron....'
+  story: 'Here is a story of Katron....',
+  adopter: ''
 },
 {
   imageURL: 'https://placekitten.com/200/302',
@@ -30,7 +33,8 @@ let catsArray = [{
   sex: 'Male',
   age: 2,
   breed: 'Multicolored cat',
-  story: 'Here is a story of Judge Dredd....'
+  story: 'Here is a story of Judge Dredd....',
+  adopter: ''
 },
 {
   imageURL: 'https://placekitten.com/300/304',
@@ -39,9 +43,11 @@ let catsArray = [{
   sex: 'Female',
   age: 3,
   breed: 'Domestic short haired',
-  story: 'Here is a story of Sleepster the Trickster....'
+  story: 'Here is a story of Sleepster the Trickster....',
+  adopter: ''
 }
 ];
+
 
 
 
@@ -60,7 +66,11 @@ function display(queue) {
 
 const CatsServices = {
   adopt() {
-    cats.dequeue();
+    const dq = cats.dequeue();
+    const adopterName = adopters.dequeue();
+    dq.adopter = adopterName;
+    cats.enqueue(dq);
+    adopters.enqueue(adopterName);
   },
 
   displayAll() {
