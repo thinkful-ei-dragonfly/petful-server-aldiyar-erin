@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "petful server app",
   "keywords": [],
-  "engines": {
-    "node": "10.15.3"
-  },
   "author": "Aldiyar, Erin, Lucas",
   "license": "UNLICENSED",
   "main": "server.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
     "start": "nodemon src/server.js"
+  },
+  "engines": {
+    "node": "10.15.3"
   },
   "dependencies": {
     "chai": "^4.2.0",
