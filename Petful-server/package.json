@@ -1,7 +1,7 @@
 {
   "name": "petful.server",
   "version": "1.0.0",
-  "description": "",
+  "description": "petful server app",
   "keywords": [],
   "engines": {
     "node": "10.15.3"

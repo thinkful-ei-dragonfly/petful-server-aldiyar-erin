@@ -1,26 +1,50 @@
-# Express Boilerplate!
+The name of the app
+Link to live app
+Link to client repo
+Link to API repo
+Name of your pair
+A summary section. This should have a concise explanation of what the petful project does.
+A section on the technology used.
 
-This is a boilerplate project used for starting new projects!
+# PETFUL
 
-## How do set up?
+Brought to you by Lucas, Erin, & Aldiyar
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+### Live App
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+Zeit link goes here
 
-## Scripts
+### Server Address
 
-Start the application `npm start`
+Heroku link goes here
 
-Start nodemon for the application `npm run dev`
+### Client Repo
 
-Run the tests in watch mode `npm test`
+https://github.com/thinkful-ei-dragonfly/petful-client-aldiyar-erin-lucas/tree/master
 
-## Deploying
+### Server Repository
 
-When your new project is ready for deployment, add a new heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+https://github.com/thinkful-ei-dragonfly/petful-server-aldiyar-erin/tree/master
+
+
+### Team
+
+Aldiyar, Erin, & Lucas
+
+
+## Summary
+
+Petful is a site for an animal shelter which allows adoption of cats and dogs. These are the only 2 animals allowed in the shelter. The adoption process works strictly on a "First-In, First-Out" basis. The FIFO is based on the animals that came to the shelter first. People can adopt a cat, or a dog, or both, but they may only adopt the animal that came to the shelter first is the one to be adopted first. In addition, people who want to adopt are also put in a Queue so they can adopt when its their turn. If the animal has been adopted by someone else, you are unable to adopt this animal and have to wait your turn.
+
+### Tech Stack
+
+#### Client
+
+* React
+* Sass
+
+#### Server
+
+* Express
+* Node
+* Queue data structures
