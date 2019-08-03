@@ -1,10 +1,4 @@
-The name of the app
-Link to live app
-Link to client repo
-Link to API repo
-Name of your pair
-A summary section. This should have a concise explanation of what the petful project does.
-A section on the technology used.
+
 
 # PETFUL
 
