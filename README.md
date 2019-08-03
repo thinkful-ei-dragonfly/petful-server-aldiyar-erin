@@ -6,11 +6,11 @@ Brought to you by Lucas, Erin, & Aldiyar
 
 ### Live App
 
-Zeit link goes here
+https://lucas-erin-aldiyar-petful-app.now.sh/
 
 ### Server Address
 
-Heroku link goes here
+https://warm-river-99681.herokuapp.com/api/
 
 ### Client Repo
 
