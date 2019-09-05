@@ -28,8 +28,7 @@ app.route('/api').get((req, res, next) => {
   // splash / home page request
   res.send({
     image: 'https://ak-s.ostkcdn.com/img/mxc/20150731_petpages_allaboutcats_01.jpg',
-    title: 'FIFO',
-    intro: 'Find cats and dogs available for adoption here on PETFUL. You could meet your new best frien by clicking HERE'
+    intro: `Find cats and dogs available for adoption here on PETFUL. See a list of pets available and check if it's your turn to adopt. If so, click away and meet your new pet! \\n You could meet your new best friend by clicking HERE`
   });
   next();
 });
